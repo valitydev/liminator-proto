@@ -22,6 +22,7 @@ exception OperationAlreadyInFinalState {}
 exception DuplicateOperation {}
 exception DuplicateLimitName {}
 exception LimitsValuesReadingException {}
+exception InvalidRequest {}
 
 struct LimitChange {
     1: optional LimitId limit_id
@@ -54,7 +55,7 @@ service LiminatorService {
     void Commit(LimitRequest request) throws (1: LimitNotFound ex1, 2: OperationNotFound ex2)
 
     /* Отменить добавление */
-    void Rollback(LimitRequest request) throws (1: LimitNotFound ex1, 2: OperationNotFound ex2)
+    void Rollback(LimitRequest request) throws (1: LimitNotFound ex1, 2: OperationNotFound ex2, 3: InvalidRequest ex3)
 
     /* Получить значения лимитов */
     list<LimitResponse> Get(LimitRequest request) throws (1: LimitNotFound ex1, 2: LimitsValuesReadingException ex2)
