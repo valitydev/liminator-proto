@@ -52,7 +52,7 @@ service LiminatorService {
         throws (1: LimitNotFound ex1, 2: DuplicateOperation ex2, 3: OperationAlreadyInFinalState ex3)
 
     /* Применить значение */
-    void Commit(LimitRequest request) throws (1: LimitNotFound ex1, 2: OperationNotFound ex2)
+    void Commit(LimitRequest request) throws (1: LimitNotFound ex1, 2: OperationNotFound ex2, 3: InvalidRequest ex3)
 
     /* Отменить добавление */
     void Rollback(LimitRequest request) throws (1: LimitNotFound ex1, 2: OperationNotFound ex2, 3: InvalidRequest ex3)
